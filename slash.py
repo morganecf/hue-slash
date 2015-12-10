@@ -10,6 +10,4 @@ def hello():
 
 @app.route('/slash', methods=['POST'])
 def slash():
-	print 'command received'
-	print request
 	return 'Hello'
