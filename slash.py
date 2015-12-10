@@ -9,6 +9,6 @@ def hello():
     return 'list of commands sent'
 
 
-@app.route('/slash')
+@app.route('/slash', methods=['POST'])
 def slash():
 	return 'Hello'
