@@ -17,11 +17,15 @@ def hello():
 @app.route('/slash', methods=['POST'])
 def slash():
 	commands = request.form['text'].strip().lower().split()
+	print commands 
+
 	if len(commands) < 2:
 		return 'Usage: /hue [light-name] [color]'
 	else:
 		light = commands[0]
 		color = commands[1]
+
+		print light, color
 
 		if light == 'all':
 			light = all_lights
