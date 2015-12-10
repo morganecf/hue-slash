@@ -3,7 +3,7 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-lights = ['S', 'M', 'D', 'T', 'S']
+lights = ['s', 'm', 'd', 't', 's']
 colors = ['red', 'blue', 'yellow', 'green']
 
 all_lights = ', '.join(lights)
