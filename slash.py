@@ -1,3 +1,8 @@
+'''
+Useful heroku stuff: https://devcenter.heroku.com/articles/getting-started-with-python-o
+'''
+
+
 import os
 from flask import Flask, render_template, request
 
