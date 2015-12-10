@@ -3,12 +3,39 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+lights = ['S', 'M', 'D', 'T', 'S']
+colors = ['red', 'blue', 'yellow', 'green']
+
+all_lights = ', '.join(lights)
+all_colors = ', '.join(colors)
+
 @app.route('/')
 def hello():
-    #data = open("data.txt").read().splitlines()
-    return 'list of commands sent'
+    data = open("data.csv").read().splitlines()
+    return render_template('commands.html', {commands: data})
 
 @app.route('/slash', methods=['POST'])
 def slash():
-	print request.form
-	return 'Hello'
+	commands = request.form['text'].strip().lower().split()
+	if len(commands) < 2:
+		return 'Usage: /hue [light-name] [color]'
+	else:
+		light = commands[0]
+		color = commands[1]
+
+		if light == 'all':
+			light = all_lights
+		elif light not in lights:
+			return 'light does not exist'
+		if color == 'all':
+			color = all_colors
+		elif color not in colors:
+			return 'color does not exist'
+
+		cmd = 'Flashing ' + color + ' to ' + light
+
+		fp = open('data.csv', 'a')
+		fp.write(cmd + '\n')
+		fp.close()
+
+		return cmd
