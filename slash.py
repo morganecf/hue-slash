@@ -10,5 +10,5 @@ def hello():
 
 @app.route('/slash', methods=['POST'])
 def slash():
-	print request
+	print request.form
 	return 'Hello'
