@@ -5,4 +5,10 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return 'Hello World!'
+    #data = open("data.txt").read().splitlines()
+    return 'list of commands sent'
+
+
+@app.route('/slash')
+def slash():
+	return 'Hello'
